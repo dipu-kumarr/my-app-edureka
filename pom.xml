@@ -8,6 +8,8 @@
   <groupId>com.mycompany.app</groupId>
   <artifactId>my-app-edureka</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <!-- Change packaging from jar to war -->
+  <packaging>war</packaging>
 
   <name>my-app-edureka</name>
   <!-- FIXME change it to the project's website -->
@@ -32,6 +34,12 @@
         <artifactId>junit-jupiter-api</artifactId>
         <version>5.9.0</version>
         <scope>test</scope>
+    </dependency>
+    <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>javax.servlet-api</artifactId>
+         <version>4.0.1</version>
+         <scope>provided</scope>
     </dependency>
     <dependency>
         <groupId>org.junit.jupiter</groupId>
@@ -60,18 +68,43 @@
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>
         </plugin>
+         <!-- Compiler Plugin -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
+        </plugin>
+        <plugin>
+             <groupId>org.apache.tomcat.maven</groupId>
+             <artifactId>tomcat7-maven-plugin</artifactId>
+             <version>2.2</version>
+             <configuration>
+                 <url>http://localhost:8080/manager/text</url>
+                 <server>TomcatServer</server>
+                 <username>admin</username>
+                 <password>password</password>
+                 <path>/my-app-edureka</path>
+             </configuration>
+        </plugin>
+         <!-- PMD Plugin -->
+        <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-pmd-plugin</artifactId>
+             <version>3.15.0</version>
+             <executions>
+                <execution>
+                    <phase>verify</phase>
+                    <goals>
+                       <goal>pmd</goal>
+                       <goal>cpd</goal>
+                    </goals>
+                </execution>
+             </executions>
+        </plugin>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-checkstyle-plugin</artifactId>
             <version>3.1.2</version>
-            <executions>
-                <execution>
-                    <phase>verify</phase>
-                    <goals>
-                        <goal>check</goal>
-                    </goals>
-                </execution>
-            </executions>
         </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
@@ -101,6 +134,65 @@
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
+        </plugin>
+        <!-- Checkstyle Plugin -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>3.1.2</version>
+            <configuration>
+                <configLocation>sun_checks.xml</configLocation> <!-- or google_checks.xml -->
+                <encoding>UTF-8</encoding>
+                <consoleOutput>true</consoleOutput>
+                <failsOnError>true</failsOnError>
+            </configuration>
+            <executions>
+                <execution>
+                    <phase>verify</phase>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
+        <!-- PMD Plugin -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-pmd-plugin</artifactId>
+            <version>3.15.0</version>
+            <configuration>
+                <targetJdk>1.7</targetJdk>
+                <failOnViolation>true</failOnViolation>
+            </configuration>
+            <executions>
+                <execution>
+                    <phase>verify</phase>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
+        <!-- SpotBugs Plugin -->
+        <plugin>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-maven-plugin</artifactId>
+            <version>4.7.3.0</version>
+            <configuration>
+                <effort>Max</effort>
+                <threshold>Low</threshold>
+                <failOnError>true</failOnError>
+            </configuration>
+            <executions>
+                <execution>
+                    <phase>verify</phase>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                </execution>
+            </executions>
         </plugin>
       </plugins>
     </pluginManagement>
