@@ -14,6 +14,7 @@
         <tomcat.version>9.0.63</tomcat.version>
         <tomcat.username>deep</tomcat.username>
         <tomcat.password>Deep@9852</tomcat.password>
+        <tomcat.url>http://13.201.224.163:9090/manager/text</tomcat.url>
     </properties>
 
     <dependencies>
@@ -57,9 +58,9 @@
                 <artifactId>tomcat-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <url>13.201.224.163:9090/manager/text</url>
-                    <username>deep</username>
-                    <password>Deep@9852</password>
+                    <url>${tomcat.url}</url>
+                    <username>${tomcat.username}</username>
+                    <password>${tomcat.password}</password>
                     <path>/my-app</path>
                 </configuration>
             </plugin>
@@ -77,9 +78,9 @@
                         <artifactId>tomcat-maven-plugin</artifactId>
                         <version>2.2</version>
                         <configuration>
-                            <url>http://13.201.224.163:9090/manager/text</url>
-                            <username>deep</username>
-                            <password>Deep@9852</password>
+                            <url>${tomcat.url}</url>
+                            <username>${tomcat.username}</username>
+                            <password>${tomcat.password}</password>
                             <path>/my-app</path>
                         </configuration>
                     </plugin>
@@ -91,8 +92,8 @@
     <servers>
         <server>
             <id>TomcatServer</id>
-            <username>deep</username>
-            <password>Deep@9852</password>
+            <username>${tomcat.username}</username>
+            <password>${tomcat.password}</password>
         </server>
     </servers>
 </project>
