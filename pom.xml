@@ -15,7 +15,7 @@
         <tomcat.version>9.0.63</tomcat.version>
         <tomcat.username>deep</tomcat.username>
         <tomcat.password>Deep@9852</tomcat.password>
-        <tomcat.url>http://13.201.224.163:9090/manager/text</tomcat.url>
+        <tomcat.url>http://localhost:9090/manager/text</tomcat.url>
     </properties>
 
     <dependencies>
