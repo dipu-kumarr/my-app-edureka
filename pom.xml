@@ -40,6 +40,13 @@
         </dependency>
     </dependencies>
 
+    <distributionManagement>
+        <repository>
+            <id>my-repo</id>
+            <url>http://localhost:9090/manager/text</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <plugins>
             <!-- Maven WAR Plugin for packaging -->
