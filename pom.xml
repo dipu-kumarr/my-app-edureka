@@ -13,9 +13,9 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tomcat.version>9.0.63</tomcat.version>
+        <tomcat.url>http://localhost:9090/manager/text</tomcat.url>
         <tomcat.username>deep</tomcat.username>
         <tomcat.password>Deep@9852</tomcat.password>
-        <tomcat.url>http://localhost:9090/manager/text</tomcat.url>
     </properties>
 
     <dependencies>
